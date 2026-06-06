@@ -53,6 +53,13 @@ El proyecto sigue los principios de **Arquitectura Limpia (Hexagonal)** para gar
    npm run dev
    ```
 
+### Ejecución con Docker (Recomendado)
+Si tienes Docker y Docker Compose instalados, puedes iniciar todo el entorno (API + Base de Datos) con un solo comando:
+```bash
+docker-compose up --build
+```
+La API estará disponible en `http://localhost:3000` y la documentación en `http://localhost:3000/api-docs`.
+
 ## 📖 Documentación de la API
 
 ### Contactos
