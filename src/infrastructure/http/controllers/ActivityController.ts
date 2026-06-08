@@ -9,6 +9,9 @@ export class ActivityController {
   private activityRepository = new PrismaActivityRepository();
   private personRepository = new PrismaPersonRepository();
 
+  /**
+   * Handles activity registration request.
+   */
   async create(req: Request, res: Response) {
     const data = createActivitySchema.parse(req.body);
     const useCase = new CreateActivityUseCase(this.activityRepository, this.personRepository);
@@ -16,6 +19,9 @@ export class ActivityController {
     return res.status(201).json(activity);
   }
 
+  /**
+   * Handles activity search request.
+   */
   async search(req: Request, res: Response) {
     const data = searchActivitySchema.parse(req.query);
     const useCase = new SearchActivitiesUseCase(this.activityRepository, this.personRepository);

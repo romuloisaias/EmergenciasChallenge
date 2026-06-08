@@ -7,8 +7,14 @@ export class CreateActivityUseCase {
   constructor(
     private activityRepository: IActivityRepository,
     private personRepository: IPersonRepository,
-  ) {}
+  ) { }
 
+  /**
+   * Registers a new activity for a specific contact.
+   * @param data The activity details including contact ID, type, date, and description.
+   * @returns The created activity entity.
+   * @throws AppError if the contact does not exist.
+   */
   async execute(data: CreateActivityDTO) {
     const person = await this.personRepository.findById(data.personId);
 
