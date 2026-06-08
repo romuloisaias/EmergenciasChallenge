@@ -3,7 +3,7 @@ import { z } from 'zod';
 export const createContactSchema = z.object({
   firstName: z.string().min(1),
   lastName: z.string().min(1),
-  email: z.string().email(),
+  email: z.email(),
   dateOfBirth: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Formato de fecha debe ser YYYY-MM-DD'),
   phones: z
     .array(
@@ -28,7 +28,7 @@ export const createContactSchema = z.object({
 export const updateContactSchema = z.object({
   firstName: z.string().min(1).optional(),
   lastName: z.string().min(1).optional(),
-  email: z.string().email().optional(),
+  email: z.email().optional(),
   dateOfBirth: z
     .string()
     .regex(/^\d{4}-\d{2}-\d{2}$/, 'Formato de fecha debe ser YYYY-MM-DD')
@@ -43,7 +43,7 @@ export const searchContactByPhoneSchema = z.object({
 export const createActivitySchema = z.object({
   personId: z.number(),
   activityType: z.enum(['call', 'meeting', 'email']),
-  activityDate: z.string().datetime(),
+  activityDate: z.iso.datetime(),
   description: z.string().optional(),
 });
 
